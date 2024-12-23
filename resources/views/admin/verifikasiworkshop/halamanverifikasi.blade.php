@@ -1,0 +1,167 @@
+@extends('home.home-layouts.home-main-tw')
+@section('container')
+    @include('admin.components.navbar')
+    @include('admin.components.sidebar')
+    <div class="mt-14 min-h-svh bg-slate-100 p-4 sm:ml-64">
+        <div class="mx-auto max-w-screen-xl">
+            <div class="mx-auto max-w-screen-xl">
+                <div class="mb-5 max-w-screen-xl rounded-lg bg-blue-600 px-5 py-8">
+                    <h1
+                        class="mb-1 text-4xl font-extrabold tracking-tight text-white dark:text-white md:text-2xl lg:text-3xl">
+                        Update Pembayaran Workshop</h1>
+                    <p class="text-lg font-normal text-gray-50 dark:text-gray-400 lg:text-lg">Verifikasi pembayaran pendaftar
+                        Workshop dengan memilih opsi Sudah / Belum di bawah</p>
+                </div>
+                @foreach ($payment as $pay)
+                    <form class="" action="{{ route('updateverifikasiworkshop', $pay->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $pay->id }}">
+                        <input type="hidden" name="nama" value="{{ $pay->nama }}">
+                        <input type="hidden" name="instansi" value="{{ $pay->instansi }}">
+                        <input type="hidden" name="email" value="{{$pay->email}}"
+                        <div class="relative mb-4 overflow-x-auto border-x border-y bg-white sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <tbody class="divide-y divide-gray-200">
+                                   
+                                    <tr>
+                                        <td
+                                            class="whitespace-nowrap border-r py-2 pl-3 pr-3 font-bold text-gray-600 md:pl-6">
+                                            No</td>
+                                        <td class="max-w-72 px-3 py-2 font-bold text-gray-600 md:px-6">
+                                            {{ $pay->id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="whitespace-nowrap border-r py-2 pl-3 pr-3 font-bold text-gray-600 md:pl-6">
+                                            Nama</td>
+                                        <td class="max-w-72 px-3 py-2 font-bold text-gray-600 md:px-6">
+                                            {{ $pay->nama }}</td>
+                                    </tr>
+                                    {{-- <tr>
+                                        <td class="whitespace-nowrap border-r py-2 pl-3 pr-3 text-gray-600 md:pl-6">
+                                            Ecourse</td>
+                                        <td class="max-w-72 px-3 py-2 text-gray-600 md:px-6">
+                                            {{ $pay->ecourse_judul }}</td>
+                                    </tr> --}}
+                                    <tr>
+                                        <td class="whitespace-nowrap border-r py-2 pl-3 pr-3 text-gray-600 md:pl-6">
+                                            Harga / Bank / Bukti</td>
+                                        <td class="max-w-72 px-3 py-2 text-gray-600 md:px-6">
+                                            {{-- {{ $pay->harga }} / <span class="uppercase">{{ $pay->bank }} /</span> --}}
+                                            <a class="cursor-pointer font-bold text-blue-600"
+                                                onclick="openModal('{{ asset('donasiworkshop/' . $pendaftarandiklat->slug . '/'  . $pay->bukti) }}')">
+                                                Lihat Gambar
+                                                {{-- <button type="button"
+                                                    class="rounded-md bg-gray-600 px-2 py-1.5 text-center text-xs font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Lihat
+                                                    Gambar</button> --}}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="whitespace-nowrap border-r py-2 pl-3 pr-3 text-gray-600 md:pl-6">
+                                            WA / Email</td>
+                                        <td class="max-w-72 px-3 py-2 text-gray-600 md:px-6">
+                                            {{ $pay->whatsapp }} / {{ $pay->email }}</td>
+                                    </tr>
+                                    {{-- <tr>
+                                        <td class="whitespace-nowrap border-r py-2 pl-3 pr-3 text-gray-600 md:pl-6">
+                                            Bukti Transfer</td>
+                                        <td class="max-w-72 px-3 py-2 md:px-6">
+                                            <a href="#"
+                                                onclick="openModal('{{ asset('pembayaranecourse/' . $pay->gambar) }}')">
+                                                <button type="button"
+                                                    class="rounded-md bg-gray-600 px-2 py-1.5 text-center text-xs font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Lihat
+                                                    Gambar</button>
+                                            </a>
+                                    </tr> --}}
+                                    <tr>
+                                        <td class="whitespace-nowrap border-r py-2 pl-3 pr-3 text-gray-600 md:pl-6">
+                                            Verifikasi</td>
+                                        <td class="max-w-72 px-3 py-2 text-gray-600 md:px-6">
+                                            <select
+                                                class="form-select {{ $pay->status == 'sudah' ? 'border-green-500 text-green-500' : 'border-red-500 text-red-500' }} block rounded-md border px-2 py-1 text-center text-xs font-medium focus:border-blue-500 focus:ring-blue-500"
+                                                name="status">
+                                                <option class="py-4 text-gray-600" value="belum"
+                                                    {{ $pay->status == 'belum' ? 'selected' : '' }}>
+                                                    Belum
+                                                </option>
+                                                <option class="py-4 text-gray-600" value="sudah"
+                                                    {{ $pay->status == 'sudah' ? 'selected' : '' }}>
+                                                    Sudah</option>
+                                            </select>
+                                    </tr>
+                                    <tr>
+                                        <td class="whitespace-nowrap py-3 pl-3 pr-3 md:pl-6">
+                                            <button type="submit"
+                                                class="rounded-md bg-blue-600 px-3 py-2 text-center text-xs font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                @endforeach
+            </div>
+        </div>
+
+        <div id="imageModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+            <div class="flex min-h-screen items-center justify-center px-4 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+                <span class="hidden sm:inline-block sm:h-screen sm:align-middle">&#8203;</span>
+                <div
+                    class="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
+                    <div class="bg-white p-6">
+                        <img id="modalImage" src="" alt="Payment Image" class="h-auto w-full">
+                    </div>
+                    <div class="bg-gray-200 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <button type="button" onclick="closeModal()"
+                            class="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(imageUrl) {
+                document.getElementById('modalImage').src = imageUrl;
+                document.getElementById('imageModal').classList.remove('hidden');
+            }
+
+            function closeModal() {
+                document.getElementById('imageModal').classList.add('hidden');
+            }
+        </script>
+    @endsection
+    {{-- <div>
+    <form class="row g-3 mt-1" action="{{ route('tambahdatasertifikat') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div>
+            <input type="hidden" name="header" value="1">
+            <label for="judul" class="mb-2 mt-3 block font-semibold text-[#64748B]">Nama Kegiatan</label>
+            <input type="text"
+                class="form-control block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                id="judul" name="judul" placeholder="Nama Kegiatan" required>
+        </div>
+        <div>
+            <label for="slug" class="mb-2 mt-3 block font-semibold text-[#64748B]">Slug</label>
+            <input type="text"
+                class="form-control block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                id="slug" name="slug" placeholder="sertifikat13-16mar2024" required>
+        </div>
+        <div>
+            <button type="submit"
+                class="mb-2 me-2 mt-5 rounded-lg bg-[#196ECD] px-4 py-2.5 text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">Buat Halaman Sertifikat</button>
+        </div>
+    </form>
+</div> --}}
+
+    {{-- <div class="mb-3 flex justify-between">
+    <h3 class="text-xl font-bold text-gray-700">Daftar Halaman</h3>
+    <a href="{{ route('tambahpendaftaran') }}"><button type="submit" class="px-3 py-2 text-xs font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tambah</button></a>
+  </div>
+   --}}

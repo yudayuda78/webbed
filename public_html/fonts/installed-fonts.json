@@ -1,0 +1,15 @@
+{
+    "lora": {
+        "italic": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_italic_eb867052ad5e90ef245b07a22dbdaab7",
+        "500_italic": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_500_italic_880e732b62889e364b2dea3286478ceb",
+        "600_italic": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_600_italic_e45f96e05b3a851c971fd9c64f37e9c7",
+        "bold_italic": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_bold_italic_50ae0c4d08c1c7ecd4d6c412a076fd3d",
+        "normal": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_normal_f169b723c8279706927397f5dae1bc64",
+        "500": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_500_c2eb810e6611bbbef3e17b681d51fee5",
+        "600": "\/Users\/yudha\/Documents\/GitHub\/webbed\/storage\/fonts\/lora_600_934f2432a02abdced32c20f9c31d4175",
+        "bold": "lora_bold_732fdfe4e8f78a0340d9ecf46d664ed0"
+    },
+    "poppins": {
+        "normal": "poppins_normal_e819fb2714fce894c58d13dd27a66c62"
+    }
+}

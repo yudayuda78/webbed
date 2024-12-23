@@ -1,0 +1,387 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* body{ */
+    /* width: 1020px;
+    height: 100vh;
+    background-image: url(../asset/back.webp); */
+    /* background-image: linear-gradient(to bottom right, rgba(82, 89, 255, 0), rgba(82, 89, 255, 0.8)  ); */
+    /* text-align: center; */
+/* } */
+
+
+/* background animasi */
+section{
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 100vh; */
+    overflow-x: hidden;
+}
+
+section .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    
+    
+}
+
+section .burung{
+    position: absolute;
+    scale: 0.25;
+    top: -20px;
+    left: -30px;
+    z-index: 20;
+    animation: animateBurung 30s linear infinite;
+}
+
+@keyframes animateBurung{
+    0%{
+        transform: translateX(calc(-50% - 100vw));
+    }
+    50%{
+        transform: translateX(calc(700% + 100vw));
+    }
+    50.01%{
+        transform: translateX(calc(700% + 100vw)) rotateY(180deg);
+    }
+    100%{
+        transform: translateX(calc(-50% - 100vw)) rotateY(180deg);
+    }
+}
+
+.daun{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    pointer-events: none;
+}
+
+.daun .set{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+}
+
+.daun .set div{
+    position: absolute;
+    display: block;
+}
+
+.daun .set div:nth-child(1){
+    left: 20%;
+    z-index: 100;
+    animation: animate 14s linear infinite;
+}
+
+.daun .set div:nth-child(2){
+    left: 40%;
+    z-index: 100;
+    animation: animate 18s linear infinite;
+}
+
+.daun .set div:nth-child(3){
+    left: 60%;
+    z-index: 100;
+    animation: animate 10s linear infinite;
+}
+
+.daun .set div:nth-child(4){
+    left: 6%;
+    z-index: 100;
+    animation: animate 17s linear infinite;
+}
+
+.daun .set div:nth-child(5){
+    left: 90%;
+    z-index: 100;
+    animation: animate 10s linear infinite;
+}
+
+.daun .set div:nth-child(6){
+    left: 75%;
+    z-index: 100;
+    animation: animate 14s linear infinite;
+}
+
+.daun .set div:nth-child(7){
+    left: 80%;
+    z-index: 100;
+    animation: animate 10s linear infinite;
+}
+
+.daun .set div:nth-child(8){
+    left: 30%;
+    z-index: 100;
+    animation: animate 12s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        opacity: 0;
+        top: -20%;
+        transform: translateX(20px) rotate(0deg);
+    }
+    10%{
+        opacity: 1;
+    }
+    20%{
+        transform: translateX(-20px) rotate(45deg);
+    }
+    40%{
+        transform: translateX(-20px) rotate(90deg);
+    }
+    60%{
+        transform: translateX(20px) rotate(180deg);
+    }
+    80%{
+        transform: translateX(-20px) rotate(45deg);
+    }
+    100%{
+        top: 200%;
+        transform: translateX(20px) rotate(225deg);
+    }
+}
+
+.daun .set div img{
+    scale: 0.25;
+}
+
+/* akhir background animasi */
+
+form{
+    height: 420px;
+    width: 390px;
+    border-radius: 5%;
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.463), rgba(255, 255, 255, 0.6));
+    /* background-color: rgb(226, 198, 160); */
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+}
+
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #5259FF;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+ul li{
+    text-align: center;
+}
+
+ul li input{
+    height: 40px;
+    width: 240px;
+    border-radius: 35px;
+    outline: none;
+    margin-bottom: 10px;
+    border: none;
+}
+
+
+/* button form */
+ul li button{
+    background-color: #5259FF;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 35px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    text-align: center;
+}
+
+.next-prev-con{
+    display: flex;
+    flex-direction: column;
+}
+
+.next-prev-con li{
+   width: 100%; 
+}
+
+.next-prev-con li:nth-child(1){
+    margin-bottom: 10px;
+}
+
+.sub li{
+    margin-top: -15px;
+}
+
+/* akhir button form */
+
+
+
+.nav-link{
+    list-style: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+/* responsive */
+@media screen and (max-width: 768px) {
+    /* Tambahkan aturan CSS yang ingin Anda gunakan untuk tampilan layar berukuran lebih kecil */
+    section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section .burung{
+        display: none;
+    }
+
+    form{
+        height: 420px;
+        width: 390px;
+        border-radius: 5%;
+        background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.463), rgba(255, 255, 255, 0.6));
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+ 
+        z-index: 50;
+    }
+    
+    
+    h1{
+        font-family: 'Roboto', sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+        color: #5259FF;
+        margin-top: 35px;
+        margin-bottom: 30px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    ul li{
+        text-align: center;
+    }
+    
+    ul li input{
+        height: 40px;
+        width: 240px;
+        border-radius: 35px;
+        outline: none;
+        margin-bottom: 10px;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Tambahkan aturan CSS yang lebih khusus untuk layar berukuran lebih kecil */
+    h1 {
+        font-size: 40px; /* Contoh: Mengubah ukuran font h1 */
+    }
+
+    ul li input {
+        width: 80%; /* Contoh: Mengubah lebar input */
+    }
+
+    ul li button {
+        width: 90%; /* Contoh: Mengubah lebar tombol */
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        /* margin-top: 90px; */
+        z-index: 50;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
